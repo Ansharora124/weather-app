@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="weather.js">
 </head>
 <style>
       body {
@@ -18,25 +19,62 @@
 <body>
     
     <div class="alphabets">
-        <h1>Weather forcast</h1>
+        <div class="top">
+        <div class="first-col"> <h1 class="weather-forcast">Weather forcast</h1></div> 
+         
+        <div class="first-col"> <h3 class="location">Location</h3></div> 
+
+         
+        
+        
+        </div>
+
+
         <h3>Cityname <input type="text" placeholder="Enter city"></h3>
       
         <div>
-        <h1>London
-            <img src="sun.webp" alt="sun" width="70" height="70"> 
-            
-        </h1>
-       <div class="date-class">date</div> 
-        <div>
-          <h2>
-            78 F
-          </h2>
-          
-        </div>
+          <div> 
+         <div class="middle">
+ <div class="col1"><h1 class="city">London
+           </h1>
+          </div>
+            <div class="col1">
+  <div class="image">
+    <img class="weather-icon sun active" src="sun.webp" alt="">
+    <img class="weather-icon cloud" src="cloud.webp" alt="">
+    <img class="weather-icon rain" src="rain.webp" alt="">
+  </div>
+</div>
+       
+       
 
 
-            
-        </div>
+
+         </div>
+         <div class="date-class"><h2>date</h2></div> 
+           
+        
+       
+       <div class="lowest">
+      
+              
+                <div class="col">
+                  <div>
+                    <p class="humidity">50%</p>
+                    <p>humidity</p>
+                  </div>
+      </div>
+<div class="col">
+                  <div>
+                    <p class="wind">15 km/hr</p>
+                    <p>windspeed</p>
+                  </div>
+      </div>
+
+                  
+              </div>
+              
     </div>
+    
 </body>
 </html>

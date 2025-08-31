@@ -1,4 +1,43 @@
 .alphabets{
  color: azure;
- text-decoration: solid;   
+ text-decoration: solid;  
+ text-rendering: optimizeLegibility; 
+}
+.lowest{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 0 2px;
+    margin-top: 50px;
+}
+.date-class{
+display: flex;
+align-items: center;
+justify-content: flex-start;
+margin-top: 50px;
+margin-left: 20px;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 80px;
+        margin-top: 5px
+
+}
+.middle{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 0 2px;
+    margin-top: 50px;
+    
+}
+.image img {
+  width: 50px;      /* change this to the desired width (e.g. 60px, 100px) */
+  height: auto;     /* preserves aspect ratio */
+  display: block;   /* removes inline-gap and helps alignment */
+  object-fit: contain;
 }
