@@ -1,86 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="weather.css">
-    
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weather — My weather app</title>
+
+  <!-- Tailwind CDN (no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="weather.css">
 </head>
-<style>
-      body {
-        background-image: url('winter.png'); /* Replace with your image path */
-        background-repeat: no-repeat; /* Optional: Prevents image repetition */
-        background-size: cover; /* Optional: Scales image to cover the entire element */
-      }
-    </style>
+<body class="background-image min-h-screen">
 
-
-<body>
-    
-    <div class="alphabets">
-        <div class="top">
-        <div class="first-col"> <h1 class="weather-forcast">Weather forcast</h1></div> 
-         
-        <div class="first-col"> <h3 class="location">Location</h3></div> 
-
-         
-        
-        
-        </div>
-<div class="search">
-<h3>Cityname <input  type="text" placeholder="Enter city">  <button>search</button></h3>
-
-</div>
-
-        
-      
+  <div class="min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-4xl bg-white/5 backdrop-blur-md rounded-2xl p-6 text-white shadow-lg">
+      <!-- header + search -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div> 
-         <div class="middle">
- <div class="col1"><h1 class="city">London
-           </h1>
-          </div>
-            <div class="col1">
-  <div class="image">
-    <img class="weather-icon sun active" src="sun.webp" alt="">
-    
-  </div>
-<div class="season">
-  rainy
-</div>
-</div>
+          <h1 class="text-2xl font-semibold">Weather Forecast</h1>
+          <p class="text-sm text-white/75">Current conditions by city</p>
         </div>
-         <div class="date-class"><h2>date</h2></div> 
-           
-         <div class="temp">
-            <h1>56</h1>
-           </div>
-        
-       
-       <div class="lowest">
-      
-              
-                <div class="col">
-                  <div>
-                    <p class="humidity">50%</p>
-                    <p>humidity</p>
-                  </div>
-      </div>
-<div class="col">
-                  <div>
-                    <p class="wind">15 km/hr</p>
-                    <p>windspeed</p>
-                  </div>
+
+        <div class="search flex items-center gap-2">
+          <label for="cityInput" class="sr-only">City</label>
+          <input id="cityInput" class="search-input px-3 py-2 rounded-md text-slate-900 w-52" type="text" placeholder="Enter city" />
+          <button class="search-btn px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md" type="button">Search</button>
+        </div>
       </div>
 
-                  
-              </div>
-              
+      <!-- main card content -->
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <!-- left: city + date -->
+        <div class="flex flex-col gap-2">
+          <h2 class="city text-3xl font-bold">London</h2>
+          <div class="date-class text-sm text-white/80">date</div>
+          <div class="mt-4 hidden md:block text-sm text-white/70">Location: <span class="location">Unknown</span></div>
+        </div>
+
+        <!-- center: icon + season -->
+        <div class="flex flex-col items-center">
+          <div class="image bg-white/5 rounded-lg p-4 flex items-center justify-center">
+            <img class="weather-icon" src="sun.webp" alt="weather icon">
+          </div>
+          <div class="season mt-3 text-lg text-white/90">rainy</div>
+        </div>
+
+        <!-- right: temperature + details -->
+        <div class="flex flex-col items-end gap-4">
+          <div class="temp text-5xl font-extrabold">56 °C</div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-end text-sm">
+              <div class="humidity text-lg font-medium">50%</div>
+              <div class="text-white/70">Humidity</div>
+            </div>
+            <div class="flex flex-col items-end text-sm">
+              <div class="wind text-lg font-medium">15 km/hr</div>
+              <div class="text-white/70">Windspeed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- footer small note -->
+      <div class="mt-6 text-xs text-white/60">
+        Tip: press Enter in the input or click Search. Background and icon update with the forecast.
+      </div>
     </div>
-    <script type="module" src="weather.js">
+  </div>
 
-    </script>
+  <!-- keep selector compatibility: .search input and .search button -->
+  <script>
+    // small shim so existing weather.js selectors work (keeps markup compatibility)
+    // move the visible input/button into the .search container so weather.js finds them
+    (function ensureSearchSelectors() {
+      const search = document.querySelector('.search');
+      if (search) {
+        const input = document.getElementById('cityInput');
+        const btn = document.querySelector('.search-btn');
+        if (input && !search.querySelector('input')) search.appendChild(input);
+        if (btn && !search.querySelector('button')) search.appendChild(btn);
+      }
+    })();
+  </script>
 
+  <script type="module" src="weather.js"></script>
 </body>
 </html>
